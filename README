@@ -1,0 +1,20 @@
+Como enlazar a un github. 
+
+# 1. Navega a la carpeta donde quieres guardar el proyecto
+cd Carpetas/Donde/Guardar/Proyectos
+
+# 2. Descarga el repositorio de GitHub en tu computadora
+git clone https://github.com/tu_usuario/tu_repositorio.git
+
+# 1. Entra a la carpeta que se acaba de crear
+cd tu_repositorio
+
+# 2. Abre esa carpeta en una nueva ventana de VS Code
+code .
+
+git pull
+
+**Para guardar tus cambios locales:**
+    ```bash
+    git add .
+    git commit -m "Explicación de lo que cambiaste"
