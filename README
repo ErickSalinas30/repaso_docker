@@ -18,3 +18,73 @@ git pull
     ```bash
     git add .
     git commit -m "Explicación de lo que cambiaste"
+
+## Flujo correcto
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/ErickSalinas30/repaso_docker.git
+git push -u origin main
+
+
+---------------------------------------------------------------------------------
+Levantamiento en docker
+docker build -t tu_usuario_docker/inventario-api:1.0.0 .
+
+docker login
+docker push tu_usuario_docker/inventario-api:1.0.0
+
+
+Verificacion funcional
+docker run -d \
+  --name mi_inventario \
+  -p 80:80 \
+  -v inventario_data:/app/data \
+  tu_usuario_docker/inventario-api:1.0.0
+
+
+curl http://localhost/health
+
+
+
+curl -X POST http://localhost/productos \
+     -H "Content-Type: application/json" \
+     -D '{"nombre":"Teclado Mecanico", "precio": 85.50, "stock": 10}'
+
+
+
+
+
+curl http://localhost/productos
+
+
+
+docker rm -f mi_inventario
+docker run -d --name mi_inventario -p 80:80 -v inventario_data:/app/data tu_usuario_docker/inventario-api:1.0.0
+sleep 10
+curl http://localhost/productos
+
+Impresiones en ejecucion y simulacion de salida 
+$ docker run -d --name web1 nginx
+
+$ docker run -d --name web2 -p 8080:80 nginx
+
+$ docker run -d --name web3 -p 8080:80 nginx
+
+$ docker ps
+
+$ docker stop web1
+
+$ docker ps -a
+
+$ docker rm web2
+
+
+
+
+---------------------------------------------------------------------------------
+Paso docker
+
+docker run -d --name prueba_final -p 80:80 -v mi_data:/app/data tu_usuario_docker/inventario-api:1.0.0
+
